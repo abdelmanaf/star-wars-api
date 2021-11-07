@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-// import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar';
 import StartshipList from '../StartshipList/StartshipList';
+import StartshipPage from '../StartshipPage/StartshipPage';
 
 
 class App extends Component {
@@ -10,7 +11,17 @@ class App extends Component {
     return (
       <>
         <NavBar />
-        <StartshipList />
+
+        <Route exact path='/' render={() =>
+           <StartshipList />
+        }/>
+
+        <Route exact path='/starship/:id' render={() =>
+          <StartshipPage />
+        }/>
+           {/* <Route exact path='/startship' render={({ location }) => 
+          <StartshipPage location={location} />
+        }/> */}
       </>
     );
   }

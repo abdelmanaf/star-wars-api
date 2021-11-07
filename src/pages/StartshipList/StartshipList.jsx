@@ -1,49 +1,46 @@
 import React, { Component } from 'react'
 import { getAllStartships } from '../../services/api-calls'
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Loading from '../../components/Loading';
 
 class StartshipList extends Component {
   state = {
-    results: {},
+    startships: [],
   };
 
   async componentDidMount() {
     const classData = await getAllStartships();
-    console.log(classData);
+    // console.log(classData.results);
     this.setState({ 
-        results: classData 
+        startships: classData.results
       });
-    } 
+  } 
     
     render() {
     return (
       <>
-
-
-
-        {/* <h1>Class List</h1>
+      {this.state.startships.length > 0 ? 
         <div className="icon-container">
-          {this.state.results.map((classTitle) => (
-            <div key={ classTitle.index }>
+          {this.state.startships.map((startship, idx) => (
+            <div key={ idx }>
 
               <Link
                 to={{
-                  pathname: `/class`,
-                  state: { classTitle },
+                  pathname: `/starship/${idx}/`,
+                  state: { name: startship.name, model: startship.model },
                 }} >
                 <div id="classDiv">
-                  <img 
-										style={{ width: "100px", height: "100px" }} 
-										src={`/images/${classTitle.name}.svg`} 
-										alt=""
-									/>
-                  {classTitle.name}
+                  {startship.name}
                 </div>
               </Link>
               
             </div>
           ))}
-        </div> */}
+        </div>
+      :
+      <Loading />
+      }
+      
       </>
     );
   }
