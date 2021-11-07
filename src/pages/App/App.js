@@ -19,9 +19,6 @@ class App extends Component {
         <Route exact path='/starship/:id' render={() =>
           <StartshipPage />
         }/>
-           {/* <Route exact path='/startship' render={({ location }) => 
-          <StartshipPage location={location} />
-        }/> */}
       </>
     );
   }

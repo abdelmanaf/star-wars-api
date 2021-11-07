@@ -1,6 +1,6 @@
 import React from "react";
 
-const NavBar = (props) => {
+const NavBar = () => {
     return (
         <header >
             <div className="App-header">

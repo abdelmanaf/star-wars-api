@@ -10,7 +10,6 @@ class StartshipList extends Component {
 
   async componentDidMount() {
     const classData = await getAllStartships();
-    // console.log(classData.results);
     this.setState({ 
         startships: classData.results
       });
